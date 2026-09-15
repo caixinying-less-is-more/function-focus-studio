@@ -1,0 +1,12 @@
+node_modules/
+backups/
+settings-before.json
+studio-state.json
+studio-server.json
+studio-server.log
+*.tmp-*
+.DS_Store
+.env
+.env.*
+*.vsix
+!function-focus-1.1.0.vsix

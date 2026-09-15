@@ -1,0 +1,24 @@
+{
+  "name": "function-focus",
+  "displayName": "Function Focus",
+  "description": "Readable light and dark themes that emphasize functions and control flow while keeping strings and comments quiet.",
+  "version": "1.1.0",
+  "publisher": "cindy-local",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Themes"],
+  "license": "MIT",
+  "contributes": {
+    "themes": [
+      {
+        "label": "Function Focus Light",
+        "uiTheme": "vs",
+        "path": "./themes/function-focus-light.json"
+      },
+      {
+        "label": "Function Focus Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/function-focus-dark.json"
+      }
+    ]
+  }
+}

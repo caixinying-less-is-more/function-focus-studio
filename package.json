@@ -1,0 +1,17 @@
+{
+  "name": "function-focus-studio",
+  "version": "1.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node studio/server.cjs",
+    "build": "node build.cjs",
+    "test": "node verify.cjs && node --test studio/server.test.cjs"
+  },
+  "dependencies": {
+    "@jaames/iro": "5.5.2",
+    "lucide": "0.468.0"
+  },
+  "devDependencies": {
+    "playwright": "1.58.2"
+  }
+}

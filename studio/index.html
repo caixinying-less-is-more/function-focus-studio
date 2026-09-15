@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Function Focus · 配色工作台</title>
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/iro.js"></script>
+  <script defer src="/lucide.js"></script>
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><i data-lucide="braces"></i><div><h1>Function Focus</h1><span>配色工作台</span></div></div>
+    <div class="topbar__actions">
+      <span id="save-state" class="save-state" role="status">正在载入</span>
+      <button class="icon-button compact-only" id="reset-compact" title="恢复默认配色" aria-label="恢复默认配色"><i data-lucide="rotate-ccw"></i></button>
+      <button class="icon-button" id="export" title="导出主题 JSON" aria-label="导出主题 JSON" disabled><i data-lucide="download"></i></button>
+      <button class="apply-button" id="apply" disabled><i data-lucide="check"></i><span>应用到 Cursor</span></button>
+    </div>
+  </header>
+  <main class="workspace">
+    <aside class="roles-panel" aria-label="配色元素">
+      <div class="section-label">主题</div>
+      <div class="segmented" aria-label="主题模式"><button id="light" aria-pressed="true"><i data-lucide="sun"></i>浅色</button><button id="dark" aria-pressed="false"><i data-lucide="moon"></i>深色</button></div>
+      <div class="section-label roles-label">代码元素 <span id="role-count">11</span></div>
+      <div id="roles" class="role-list" role="group" aria-label="选择代码元素"></div>
+      <div class="sidebar-footer"><button id="reset" class="text-button"><i data-lucide="rotate-ccw"></i>恢复默认配色</button></div>
+    </aside>
+    <section class="preview-panel" aria-label="代码实时预览">
+      <div class="preview-toolbar">
+        <div id="samples" class="sample-tabs" role="tablist" aria-label="代码示例"></div>
+        <div class="preview-tools">
+          <button id="undo" class="icon-button" title="撤销配色修改" aria-label="撤销配色修改" disabled><i data-lucide="undo-2"></i></button>
+          <button id="redo" class="icon-button" title="重做配色修改" aria-label="重做配色修改" disabled><i data-lucide="redo-2"></i></button>
+          <span class="tool-divider"></span>
+          <button id="wrap" class="icon-button" title="自动换行" aria-label="自动换行" aria-pressed="false"><i data-lucide="wrap-text"></i></button>
+        </div>
+      </div>
+      <div class="editor" id="editor">
+        <div class="editor-breadcrumb"><i data-lucide="file-code-2"></i><span id="filename">task_generation_mm.py</span><i data-lucide="chevron-right"></i><span>Python</span></div>
+        <div class="code-scroll" tabindex="0" aria-label="Python 代码预览"><div id="code" class="code"><div class="loading">正在载入代码</div></div></div>
+        <div class="editor-status"><span><span class="live-dot"></span>实时预览</span><span>UTF-8 <span class="status-divider">·</span> Python</span></div>
+      </div>
+      <div class="preview-bottom"><span><i data-lucide="type"></i>预览字号</span><input id="font-size" type="range" min="12" max="20" value="14" aria-label="预览字号"><output id="font-size-value">14 px</output></div>
+    </section>
+    <aside class="inspector" aria-label="颜色编辑器">
+      <div class="inspector-heading"><span class="section-label">当前颜色</span><span id="current-swatch" class="large-swatch"></span></div>
+      <h2 id="current-label">函数调用</h2>
+      <div id="picker" class="picker" aria-label="拖动选择颜色"></div>
+      <label class="hex-field"><span>HEX</span><input id="hex" type="text" value="#005FCC" maxlength="7" spellcheck="false" aria-label="HEX 颜色"><input id="native-color" type="color" value="#005fcc" title="系统选色器" aria-label="系统选色器"></label>
+      <div id="color-error" class="field-error" role="status"></div>
+      <div class="channels">
+        <label><span>色相</span><input id="hue" type="range" min="0" max="360" value="212"><output id="hue-value">212°</output></label>
+        <label><span>饱和度</span><input id="saturation" type="range" min="0" max="100" value="100"><output id="saturation-value">100%</output></label>
+        <label><span>明度</span><input id="brightness" type="range" min="0" max="100" value="80"><output id="brightness-value">80%</output></label>
+      </div>
+      <div class="inspector-rule"></div>
+      <div class="contrast-row"><span>背景对比度</span><strong id="contrast">5.78 : 1</strong><span id="contrast-mark" class="contrast-mark">AA</span></div>
+      <div class="inspector-rule"></div>
+      <label class="toggle-row"><span>函数调用加粗</span><input id="call-bold" type="checkbox" role="switch" checked><span class="switch" aria-hidden="true"></span></label>
+      <label class="toggle-row"><span>参数加粗</span><input id="parameter-bold" type="checkbox" role="switch"><span class="switch" aria-hidden="true"></span></label>
+      <div class="inspector-rule"></div>
+      <div class="section-label">最近使用</div>
+      <div id="recent" class="recent-colors"></div>
+    </aside>
+  </main>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
